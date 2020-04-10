@@ -1,4 +1,4 @@
-.PHONY: clear mrproper
+.PHONY: clean mrproper
 CXX = g++
 CXXFLAGS = -c -I include -Wextra -Wall -std=c++14
 LDFLAGS = -Llib -lsfml-graphics -lsfml-window -lsfml-system
@@ -16,3 +16,9 @@ bin/prog: bin/obj/main.o
 
 bin/obj/main.o: src/main.cpp
 	$(CXX) src/main.cpp -o bin/obj/main.o $(CXXFLAGS)
+
+clean:
+	rm -rf bin/obj/*
+
+mrproper : clean
+	rm bin/prog bin/$(EXEC)
